@@ -42,25 +42,25 @@ button.on("click", function() {
     var searchedState = d3.select("#state").property("value")
 
     var searchString = [] 
-    // searchString.push({'city' : searchedCity})
+    var filteredData = ufos
+
     if(searchedCity != ""){
-        searchString.push({'city' : searchedCity})
+        filteredData = filteredData.filter(ufo => ufo.city === searchedCity);
     }
     if(searchedCountry != ""){
-        searchString.push({'country' : searchedCountry})
+        filteredData = filteredData.filter(ufo => ufo.country === searchedCountry);
     }
     if(searchedDate != ""){
-        searchString.push({'datetime' : searchedDate})
+        filteredData = filteredData.filter(ufo => ufo.datetime === searchedDate);
     }
     if(searchedShape != ""){
-        searchString.push({'shape' : searchedShape})
+        filteredData = filteredData.filter(ufo => ufo.shape === searchedShape);
     }
     if(searchedState != ""){
-        searchString.push({'state' : searchedState})
+        filteredData = filteredData.filter(ufo => ufo.state === searchedState);
     }
-    console.log(searchString)
+    console.log(filteredData)
     
-    var filteredData = ufos.filter(ufo => ufo.datetime === searchedDate);
 
 
     d3.select("tbody").html("")
